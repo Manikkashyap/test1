@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+      <mat-card>
+        <mat-toolbar>ADD PRODUCT</mat-toolbar>
+        <form #userform="ngForm" (ngSubmit)="(userform)" novalidate>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Product Name</mat-label>
+            <input
+            matInput placeholder="Ex. iPhone 11"
+            required name="name"
+            value="iPhone 11"
+            ngModel
+            #name="ngModel"
+            [ngClass]="{'is-invalid':userform.submitted && name.invalid}">
+          </mat-form-field>
+          <mat-error *ngIf="userform.submitted && name.invalid">
+            <mat-error *ngIf="name.errors?.required">
+              Product Name Should be entered .
+            </mat-error>
+          </mat-error>
+          <br><br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Product Details</mat-label>
+            <input type="text"
+            matInput
+            placeholder="Ex. karan121@gmail.com"
+            required name="pdetails"
+            ngModel
+            #pdetails="ngModel"
+            [ngClass]="{'is-invalid':userform.submitted && pdetails.invalid}">
+          </mat-form-field>
+          <mat-error *ngIf="userform.submitted && pdetails.invalid">
+            <mat-error *ngIf="pdetails.errors?.required">
+              Email should be entered .
+            </mat-error>
+          </mat-error>
+          <br><br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Height</mat-label>
+            <input type="text"
+            matInput
+            placeholder="Ex. 15cm ."
+            required name="pheight"
+            ngModel
+            minlength="5"
+            #pheight="ngModel"
+            [ngClass]="{'is-invalid':userform.submitted && pheight.invalid}">
+          </mat-form-field>
+          <mat-error *ngIf="userform.submitted && pheight.invalid">
+            <mat-error *ngIf="pheight.errors?.minlength">
+              Product height should be of 5 characters.
+            </mat-error>
+            <mat-error *ngIf="pheight.errors?.required">
+              Product height Should be entered .
+            </mat-error>
+          </mat-error>
+          <br><br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Product Width</mat-label>
+            <input type="text"
+            matInput placeholder="Ex. 6cm ."
+            required name="pwidth"
+            ngModel
+            #pwidth="ngModel"
+            [ngClass]="{'is-invalid':userform.submitted && pwidth.invalid}">
+          </mat-form-field>
+          <mat-error *ngIf="userform.submitted && pwidth.invalid">
+            <mat-error *ngIf="pwidth.errors?.required">
+                Product Width Should be entered .
+            </mat-error>
+          </mat-error>
+          <br><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Type of Product</mat-label>
+            <select name="ptype"
+            matInput
+            required ngModel
+            #ptype="ngModel"
+            [ngClass]="{'is-invalid':userform.submitted && ptype.invalid}">
+              <option value="Kitchen Appliances" selected></option>
+              <option value="Cothes">Volvo</option>
+              <option value="Electronics" disabled>Saab</option>
+              <option value="Electronics">Mercedes</option>
+              <option value="Books">Audi</option>
+            </select>
+          </mat-form-field>
+          <mat-error *ngIf="userform.submitted && ptype.invalid">
+            <mat-error *ngIf="ptype.errors?.required">
+              Product type Should be required .
+            </mat-error>
+          </mat-error>
+          <br><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Status of product</mat-label>
+            <input type="checkbox"
+            name="pstatus"
+            class="form-check-input"
+            ngModel
+            #pstatus="ngModel"
+            [ngClass]="{ 'is-invalid': userform.submitted && pstatus.invalid }"
+            required >
+          </mat-form-field>
+          <button class="btn0 rounded-pill bg-danger" [disabled]="!userform.valid" type = " submit " mat-raised-button>Submit</button>
+          <br><br>
+          <button class="btn1 rounded-pill bg-danger" mat-raised-button>Close</button>
+          </form>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>
+</div>
